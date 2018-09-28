@@ -1,0 +1,33 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14)
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.isNotHandSet {
+  color: black;
+}
+
+.isHandSet {
+  color: pink
+}
+/*if width is 985px or larger override following values of sidenav class*/
+@media (min-width: 985px) {
+  .sidenav {
+    box-shadow: 0 6px 10px 0 rgba(200, 0, 0, 0.24)
+  }
+}
+/*if width is 1000px or larger override following values of sidenav class*/
+@media (min-width: 1000px) {
+  .sidenav {
+    box-shadow: 0 6px 10px 0 rgba(0, 200, 0, 0.24)
+  }
+}
