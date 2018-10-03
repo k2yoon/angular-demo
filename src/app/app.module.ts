@@ -7,12 +7,14 @@ import { KaiNavComponent } from './kai-nav/kai-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { KaiTableComponent } from './kai-table/kai-table.component';
+import { KaiComponent1Component } from './kai-component1/kai-component1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KaiNavComponent,
-    KaiTableComponent
+    KaiTableComponent,
+    KaiComponent1Component
   ],
   imports: [
     BrowserModule,

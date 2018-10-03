@@ -1,0 +1,79 @@
+.kai-comp1-wrapper {
+    display: grid;
+    grid-gap: 5px;
+    background-color: gray;
+}
+
+.kai-comp1-wrapper div {
+    background-color: #a7dfd9;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+/*when it is web device*/
+.isWebComp1 {
+    color: blue;
+    grid-column-gap: 10px;
+    grid-row-gap: 25px;
+    grid-template-columns: 150px 450px 200px;
+    grid-template-rows: 200px 300px 150px;
+}
+.isWebComp1 div{
+    padding: 40px;
+    font-size: 30px;
+}
+.isWebComp1 div:nth-child(2) {
+    grid-column: 3;
+    grid-row: 2 / 4;
+    background-color: red;
+}
+.isWebComp1 div:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    background-color: pink;
+}
+
+/*when it is tablet device*/
+.isTabletComp1 {
+    color: green;
+    grid-column-gap: 10px;
+    grid-row-gap: 25px;
+    grid-template-columns: 120px 240px 180px;
+    grid-template-rows: 350px 150px;
+}
+.isTabletComp1 div{
+    padding: 20px;
+    font-size: 20px;
+}
+.isTabletComp1 div:nth-child(1) {
+    grid-column: 3;
+    grid-row: 2 / 4;
+    background-color: yellow;
+}
+.isTabletComp1 div:nth-child(4) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    background-color: rgb(134, 109, 71);
+}
+
+/*when it is mobile device*/
+.isHandSetComp1 {
+    color: red;
+    display: grid;
+    grid-template-columns: 250px 150px;
+    grid-template-rows: 200px 50px 150px;
+}
+.isHandSetComp1 div{
+    padding: 10px;
+    font-size: 20px;
+}
+.isHandSetComp1 div:nth-child(1) {
+    grid-column: 3;
+    grid-row: 1 / 4;
+    background-color: yellow;
+}
+.isHandSetComp1 div:nth-child(4) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    background-color: rgb(134, 109, 71);
+}

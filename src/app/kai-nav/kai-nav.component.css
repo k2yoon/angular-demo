@@ -12,13 +12,15 @@
   top: 0;
 }
 
-.isNotHandSet {
+.isNotHandSetNav {
   color: black;
 }
 
-.isHandSet {
-  color: pink
+.isHandSetNav {
+  color: pink;
 }
+
+/* Angular 6 solution */
 /*if width is 985px or larger override following values of sidenav class*/
 @media (min-width: 985px) {
   .sidenav {
