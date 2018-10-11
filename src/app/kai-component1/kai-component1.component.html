@@ -1,6 +1,7 @@
 <div class="kai-comp1-wrapper"
-[ngClass]="{isWebComp1: (isWeb$ | async), isTabletComp1: (isTablet$ | async), isHandSetComp1: (isHandset$ | async)}"
+[ngClass]="{isWebComp1: (isXlarge$ | async) || (isLarge$ | async) || (isMedium$ | async), isTabletComp1: (isSmall$ | async), isHandSetComp1: (isXsmall$ | async)}"
 >
+<!-- [ngClass]="{isWebComp1: (isWeb$ | async), isTabletComp1: (isTablet$ | async), isHandSetComp1: (isHandset$ | async)}" -->
   <div>Grid 1</div>
   <div>Grid 2</div>
   <div>Grid 3</div>

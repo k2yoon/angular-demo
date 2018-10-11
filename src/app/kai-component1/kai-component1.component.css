@@ -1,4 +1,5 @@
 .kai-comp1-wrapper {
+    padding:15px;
     display: grid;
     grid-gap: 5px;
     background-color: gray;
