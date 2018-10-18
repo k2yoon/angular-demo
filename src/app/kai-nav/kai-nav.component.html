@@ -1,36 +1,91 @@
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     class="sidenav"
-    fixedInViewport="true"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)"
-    >
+    [fixedInViewport]="(notDesktop$ | async) ? true : true"
+    [fixedTopGap]="(notDesktop$ | async) ? 0 : 64" 
+    position="start"
+    autoFocus="true"
+    [attr.role]="(notDesktop$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(notDesktop$ | async) ? 'over' : 'side'"
+    [opened]="!(notDesktop$ | async)"
+    scrollable="CdkScrollable"
+  >
+    <!-- 
+    [fixedInViewport]="(notDesktop$ | async) ? true : true"
+    [fixedTopGap]="(notDesktop$ | async) ? 0 : 0" 
+    -->
+    <!-- [attr.role]="(notDesktop$ | async) ? 'dialog' : 'navigation'" -->
+    <!-- [opened]="!(notDesktop$ | async)" -->
     <!--the ngClass line below isNotHandSet: !(isHandSet$ | async) means if it's not a handset device use isNotHandSet class in kai-nav.component.css file-->
-    <mat-toolbar color="primary"
-    [ngClass]="{isNotHandSetNav: !(isHandset$ | async), isHandSetNav: (isHandset$ | async)}"
-    >Menu
-    </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <!-- class="navHeader" -->
+    <mat-toolbar color="primary" class="navHeader"
+    *ngIf="notDesktop$ | async">
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="notDesktop$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>kai-app</span>
+      <span style="position: relative;margin: auto;left:-15px;"
+      >IX</span>
+    </mat-toolbar>
+    <!-- [ngClass]="{isWebNav: !(notDesktop$ | async), isNotWebNav: (notDesktop$ | async)}" -->
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+    <button mat-button [matMenuTriggerFor]="appMenu2"
+    style="position:fixed;bottom:24px;"
+    *ngIf="(isMobile$ | async)">
+      <span>User: Kai in nav</span>
+    </button>
+    <mat-menu #appMenu2="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>
+        <ng-content select='[logout-container-nav]'></ng-content>
+      </button>
+    </mat-menu>
+  </mat-sidenav>
+  <mat-sidenav-content 
+    [ngClass]="{mobileSideNavContainer: (isMobile$ | async), notMobileSideNavContainer: !(isMobile$ | async)}"
+  >
+      <!-- [ngClass]="{webHeader: !(notDesktop$ | async), notWebHeader: (notDesktop$ | async)}" -->
+    <mat-toolbar color="primary" class="webHeader">
+
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        >
+        <!-- *ngIf="notDesktop$ | async" -->
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="middle-space">kai-app</span>
+      <!-- <button mat-icon-button *ngIf="isMobile$ | async"
+        [matMenuTriggerFor]="appMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button> -->
+      <button mat-button [matMenuTriggerFor]="appMenu"
+        *ngIf="!(isMobile$ | async)">
+        <span>User: Kai</span>
+      </button>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>
+          <ng-content class="logout-button" select='[logout-container-tool]'></ng-content>
+        </button>
+      </mat-menu>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>
+    <mat-toolbar class="kai-footer"> footer </mat-toolbar>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>

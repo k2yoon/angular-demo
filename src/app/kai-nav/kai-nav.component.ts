@@ -14,7 +14,23 @@ export class KaiNavComponent {
     .pipe(
       map(result => result.matches)
     );
-
+  notDesktop$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small])
+    .pipe(
+      map(result => result.matches)
+    );
+  isMobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
+    .pipe(
+      map(result => result.matches)
+    );
+  notMobile$: Observable<boolean> = this.breakpointObserver.observe(
+    [Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge
+    ]).pipe(
+      map(result => result.matches)
+    );
+  isDesktop$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+    .pipe(
+      map(result => result.matches)
+    );
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   }
